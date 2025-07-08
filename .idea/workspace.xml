@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf82515e-7378-43c2-b056-9059a3ef1512" name="更改" comment="" />
+    <list default="true" id="cf82515e-7378-43c2-b056-9059a3ef1512" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/data/distance_matrix.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data1.xls" beforeDir="false" afterPath="$PROJECT_DIR$/data/data1.xls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_pre_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_pre_processing.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +16,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2zaHgTWx8lhuLgsNQPMA5SY2OM8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -21,8 +27,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/liumingxin/Documents/cumcm_exe",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -41,7 +50,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1751962374616</updated>
+      <workItem from="1751987018460" duration="16000" />
+      <workItem from="1751987050998" duration="54000" />
+      <workItem from="1751987106113" duration="2000" />
+      <workItem from="1751987186855" duration="58000" />
+      <workItem from="1751987317672" duration="183000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
