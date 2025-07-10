@@ -139,5 +139,5 @@ plt.title('珠三角地区任务完成率分布\n(仅显示数据点{effective_r
           fontsize=16, pad=18)
 
 # 保存
-plt.savefig('constrained_potential_map.pdf', dpi=300, bbox_inches='tight', facecolor='white')
+plt.savefig('map4.pdf', dpi=300, bbox_inches='tight', facecolor='white')
 plt.show()

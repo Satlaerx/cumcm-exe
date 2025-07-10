@@ -82,4 +82,4 @@ legend_html = '''
 m.get_root().html.add_child(folium.Element(legend_html))
 
 # 保存地图
-m.save('optimized_legend_map.html')
+m.save('map2.html')
