@@ -17,4 +17,4 @@
 |   cartopy    | 0.22.0 | 作适合放在论文中的静态地图 |
 |     ...      |  ...   |      ...      |
 
-优先使用`conda install`,找不到适合架构和操作系统版本的库再尝试`pip install`
+优先使用`conda install`,找不到适合架构或操作系统版本的库再尝试`pip install`
