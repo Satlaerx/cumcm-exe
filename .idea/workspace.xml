@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf82515e-7378-43c2-b056-9059a3ef1512" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/数据2.xlsx" beforeDir="false" />
-    </list>
+    <list default="true" id="cf82515e-7378-43c2-b056-9059a3ef1512" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +80,7 @@
       <workItem from="1751987641720" duration="5831000" />
       <workItem from="1752062309972" duration="1575000" />
       <workItem from="1752063977464" duration="9844000" />
-      <workItem from="1752135046786" duration="15015000" />
+      <workItem from="1752135046786" duration="15322000" />
     </task>
     <servers />
   </component>
