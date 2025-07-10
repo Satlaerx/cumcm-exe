@@ -28,7 +28,6 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     a = term1 + term2 * term3
 
     c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
-    print(1)
     return 6371.0 * c
 
 # 计算任务和成员之间的距离矩阵（pandas.DataFrame类型存储）
@@ -61,3 +60,32 @@ for task_id, task_row in tasks.iterrows():
         distance_matrix.at[task_id, mem_id] = distance
 
 distance_matrix.to_excel("./data/distance_matrix.xlsx")
+
+# 计算任务与任务之间的距离矩阵
+# 创建空的距离矩阵
+task_to_task_distance_matrix = pd.DataFrame(
+    index=tasks.index,
+    columns=tasks.index,
+    dtype=float
+)
+
+# 填充任务与任务之间的距离矩阵
+for task_id1, task_row1 in tasks.iterrows():
+    for task_id2, task_row2 in tasks.iterrows():
+        # 如果是同一个任务，距离为0
+        if task_id1 == task_id2:
+            task_to_task_distance_matrix.at[task_id1, task_id2] = 0
+            continue
+
+        # 提取经纬度
+        task1_lat, task1_lon = task_row1['gps_0'], task_row1['gps_1']
+        task2_lat, task2_lon = task_row2['gps_0'], task_row2['gps_1']
+
+        # 计算距离
+        distance = haversine_distance(task1_lat, task1_lon, task2_lat, task2_lon)
+
+        # 填充矩阵
+        task_to_task_distance_matrix.at[task_id1, task_id2] = distance
+
+# 以同样的格式输出到Excel文件
+task_to_task_distance_matrix.to_excel("./data/task_to_task_distance_matrix.xlsx")
