@@ -4,8 +4,12 @@ import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import matplotlib.tri as tri
+from scipy.interpolate import Rbf
+from scipy.spatial import KDTree
 from matplotlib import rcParams
+
+# ==================== 配置参数 ====================
+effective_radius = 0.1
 
 # ==================== 字体设置 ====================
 font_path = '/Users/liumingxin/Library/Fonts/FangZhengHeiTiJianTi-1.ttf'
@@ -20,11 +24,11 @@ cluster_data = pd.read_csv("./data/cluster_centers_with_rates.csv")
 cluster_centers = list(zip(cluster_data['latitude'], cluster_data['longitude']))
 completion_rates = cluster_data['completion_rate'].values
 
-# 计算显示范围（扩展5%缓冲）
-lats = [c[0] for c in cluster_centers]
-lngs = [c[1] for c in cluster_centers]
-lat_buffer = (max(lats) - min(lats)) * 0.05
-lng_buffer = (max(lngs) - min(lngs)) * 0.05
+# 计算显示范围（扩展10%缓冲）
+lats = np.array([c[0] for c in cluster_centers])
+lngs = np.array([c[1] for c in cluster_centers])
+lat_buffer = (max(lats) - min(lats)) * 0.1
+lng_buffer = (max(lngs) - min(lngs)) * 0.1
 extent = [min(lngs)-lng_buffer, max(lngs)+lng_buffer,
           min(lats)-lat_buffer, max(lats)+lat_buffer]
 
@@ -38,25 +42,33 @@ ax.add_feature(cfeature.RIVERS.with_scale('10m'), linewidth=0.3, edgecolor='blue
 ax.add_feature(cfeature.LAND, facecolor='#f5f5f5', alpha=0.3)
 ax.add_feature(cfeature.OCEAN, facecolor='#d0e0ff', alpha=0.2)
 
-# ==================== 电势图核心代码 ====================
-from scipy.interpolate import Rbf
+# ==================== 改进的电势图 ====================
+# 1. 创建KDTree用于最近邻搜索
+points = np.column_stack([lngs, lats])
+tree = KDTree(points)
 
-# 1. 创建插值网格
-grid_size = 300  # 网格密度
+# 2. 创建插值网格
+grid_size = 300
 xgrid = np.linspace(extent[0], extent[1], grid_size)
 ygrid = np.linspace(extent[2], extent[3], grid_size)
 X, Y = np.meshgrid(xgrid, ygrid)
 
-# 2. 使用径向基函数插值（高斯核）
+# 3. 计算每个网格点到最近数据点的距离
+grid_points = np.column_stack([X.ravel(), Y.ravel()])
+distances, _ = tree.query(grid_points, k=1)
+distance_mask = (distances <= effective_radius).reshape(X.shape)
+
+# 4. 径向基函数插值
 rbf = Rbf(lngs, lats, completion_rates,
           function='gaussian',
-          epsilon=0.1)  # 控制平滑度
+          epsilon=0.1)
 Z = rbf(X, Y)
-
-# 确保插值结果在[0,1]范围内
 Z = np.clip(Z, 0, 1)
 
-# 3. 绘制插值后的电势图
+# 5. 应用距离掩码
+Z[~distance_mask] = np.nan  # 超出有效半径的区域设为透明
+
+# 6. 绘制电势图
 contour = ax.contourf(
     X, Y, Z,
     levels=100,
@@ -64,10 +76,11 @@ contour = ax.contourf(
     transform=ccrs.PlateCarree(),
     alpha=0.7,
     zorder=5,
-    antialiased=True
+    antialiased=True,
+    extend='neither'  # 不扩展颜色范围
 )
 
-# 4. 添加原始数据点（带完成率颜色）
+# 7. 添加原始数据点
 sc = ax.scatter(
     lngs, lats,
     c=completion_rates,
@@ -80,10 +93,6 @@ sc = ax.scatter(
     alpha=0.8
 )
 
-# 5. 调整显示范围（比数据范围扩大10%）
-ax.set_extent([extent[0]-lng_buffer*2, extent[1]+lng_buffer*2,
-               extent[2]-lat_buffer*2, extent[3]+lat_buffer*2],
-              crs=ccrs.PlateCarree())
 # ==================== 城市标记 ====================
 cities = {
     '广州': (23.13, 113.26),
@@ -119,11 +128,16 @@ gl = ax.gridlines(
 gl.top_labels = False
 gl.right_labels = False
 
+# 添加半径说明
+ax.text(0.02, 0.02, f'有效插值半径: {effective_radius}度 (约{int(effective_radius*111)}公里)',
+        transform=ax.transAxes,
+        bbox=dict(facecolor='white', alpha=0.8, pad=5, edgecolor='none'),
+        zorder=20)
+
 # 标题
-plt.title('珠三角地区任务完成率电势图\n完成率范围: {:.2f}~{:.2f}'.format(
-    min(completion_rates), max(completion_rates)),
-    fontsize=16, pad=18)
+plt.title('珠三角地区任务完成率分布\n(仅显示数据点{effective_radius}度范围内的插值)'.format(effective_radius=effective_radius),
+          fontsize=16, pad=18)
 
 # 保存
-plt.savefig('potential_map.pdf', dpi=300, bbox_inches='tight', facecolor='white')
+plt.savefig('constrained_potential_map.pdf', dpi=300, bbox_inches='tight', facecolor='white')
 plt.show()
