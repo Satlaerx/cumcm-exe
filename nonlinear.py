@@ -17,17 +17,17 @@ data2 = pd.read_excel("./data/data2.xlsx", names=["mem_id", "gps", "task_limit",
 distances2 = pd.read_excel('./data/task_to_task_distance_matrix.xlsx')
 
 # 定义模型函数
-def func(x):
+def gaussian_decay(x):
     """高斯衰减函数"""
     return np.exp(-x**2 / (2 * sigma**2))
 
-def func2(x, a, b, p0):
+def model(x, a, b, p0):
     """目标拟合函数
-    x: 包含x1和x2的元组或列表
+    x: 包含MD和TD的元组或列表
     a, b, p0: 待拟合参数
     """
-    x1, x2 = x
-    return p0 * (1 / (1 + a * x1)) * (1 / (1 + b * x2))
+    MD, TD = x
+    return p0 * (1 / (1 + a * MD)) * (1 / (1 + b * TD))
 
 # 初始化x1和x2
 n_tasks = data1.shape[0]
@@ -42,21 +42,21 @@ values = distances.iloc[:, 1:].values  # 所有行和列都是数据
 for i in range(values.shape[0]):  # 行循环
     for j in range(values.shape[1]):  # 列循环
         value = values[i, j]
-        x1[i] += func(value) * task_limits[j]
+        x1[i] += gaussian_decay(value) * task_limits[j]
 
 # 计算x2特征
 values2 = distances2.iloc[:, 1:].values
 for i in range(values2.shape[0]):
     for j in range(values2.shape[1]):
         value = values2[i, j]  # 修正变量名
-        x2[i] += func(value)
+        x2[i] += gaussian_decay(value)
 
 # 获取目标变量
 y_exp = data1["pricing"].values
 
 # 使用 curve_fit 进行非线性最小二乘拟合
 # 将x1和x2组合成一个元组传递给func2
-popt, pcov = curve_fit(func2, (x1, x2), y_exp, p0=[0.1, 0.1, 100])
+popt, pcov = curve_fit(model, (x1, x2), y_exp, p0=[0.1, 0.1, 100])
 # p0是参数初始猜测值，需要根据实际问题调整
 
 # 计算参数的标准误差
@@ -69,7 +69,7 @@ print(f"b = {popt[1]:.4f} ± {perr[1]:.4f}")
 print(f"p0 = {popt[2]:.4f} ± {perr[2]:.4f}")
 
 # 计算拟合优度 R²
-y_pred = func2((x1, x2), *popt)
+y_pred = model((x1, x2), *popt)
 residuals = y_exp - y_pred
 ss_res = np.sum(residuals**2)
 ss_tot = np.sum((y_exp - np.mean(y_exp))**2)

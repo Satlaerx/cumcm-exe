@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 设置中文字体和图片清晰度
-plt.rcParams["font.family"] = ["SimHei", "Heiti TC"]
+plt.rcParams["font.family"] = ["Times New Roman","SimHei"]
 plt.rcParams['figure.dpi'] = 1000
 
 def fun(d, sigma):

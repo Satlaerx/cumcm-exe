@@ -4,6 +4,9 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import davies_bouldin_score, calinski_harabasz_score
 import numpy as np
 
+plt.rcParams["font.family"] = ["Times New Roman","SimHei"]
+plt.rcParams['figure.dpi'] = 500
+
 data1=pd.read_excel("./data/data1.xls",names=["task_id","gps_0","gps_1","pricing","condition"])
 
 X_scaled=data1[["gps_0","gps_1"]]
