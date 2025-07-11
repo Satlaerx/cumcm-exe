@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf82515e-7378-43c2-b056-9059a3ef1512" name="更改" comment="" />
+    <list default="true" id="cf82515e-7378-43c2-b056-9059a3ef1512" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/non_lin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/non_lin2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +43,9 @@
     "Python.map2.executor": "Run",
     "Python.map3.executor": "Run",
     "Python.map4.executor": "Run",
+    "Python.non_lin.executor": "Run",
+    "Python.non_lin2.executor": "Run",
+    "Python.plot1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -80,7 +88,7 @@
       <workItem from="1751987641720" duration="5831000" />
       <workItem from="1752062309972" duration="1575000" />
       <workItem from="1752063977464" duration="9844000" />
-      <workItem from="1752135046786" duration="15632000" />
+      <workItem from="1752135046786" duration="22226000" />
     </task>
     <servers />
   </component>
@@ -125,6 +133,9 @@
     <SUITE FILE_PATH="coverage/cumcm_exe$map2.coverage" NAME="map2 覆盖结果" MODIFIED="1752153657769" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$map4.coverage" NAME="map4 覆盖结果" MODIFIED="1752153616916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$count_user_around_task.coverage" NAME="count_user_around_task 覆盖结果" MODIFIED="1752158944084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$non_lin2.coverage" NAME="non_lin2 覆盖结果" MODIFIED="1752206301572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$plot1.coverage" NAME="plot1 覆盖结果" MODIFIED="1752202662349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$non_lin.coverage" NAME="non_lin 覆盖结果" MODIFIED="1752206220075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$data_pre_processing.coverage" NAME="data_pre_processing 覆盖结果" MODIFIED="1752135204107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$map3.coverage" NAME="map3 覆盖结果" MODIFIED="1752153639225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$map.coverage" NAME="map 覆盖结果" MODIFIED="1751989888806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
