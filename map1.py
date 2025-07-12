@@ -62,6 +62,6 @@ for _, row in df_users.iterrows():
 folium.LayerControl(collapsed=False).add_to(m)
 
 # 保存地图
-m.save('map1.html')
+m.save('./map/map1.html')
 
 print(f"任务数据点: {len(df_tasks)}个 | 用户数据点: {len(df_users)}个")

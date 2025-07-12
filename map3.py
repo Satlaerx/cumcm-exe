@@ -110,7 +110,7 @@ plt.title('珠三角地区任务完成率热力图（46个聚类中心）\n完�
     fontsize=16, pad=18)
 
 # 保存图片
-plt.savefig('map3.pdf',
+plt.savefig('./map/map3.pdf',
            dpi=300,
            bbox_inches='tight',
            facecolor='white')
