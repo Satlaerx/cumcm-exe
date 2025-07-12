@@ -19,13 +19,14 @@ def gaussian_decay(x):
     """高斯衰减函数"""
     return np.exp(-x**2 / (2 * sigma**2))
 
-def model(x, a, b, p0):
-    """目标拟合函数
+def model(x, a, b, P0):
+    """
+    目标拟合函数
     x: 包含MD和TD的元组或列表
-    a, b, p0: 待拟合参数
+    a, b, P0: 待拟合参数
     """
     MD, TD = x
-    return p0 +  a * MD + b * TD
+    return P0 +  a * MD + b * TD
 
 # 初始化x1和x2
 n_tasks = data1.shape[0]

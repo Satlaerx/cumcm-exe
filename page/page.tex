@@ -1,0 +1,98 @@
+\documentclass[UTF8,a4paper]{ctexart}
+\usepackage[
+top=34.58mm,
+bottom=32.58mm,
+left=28mm,
+right=26mm
+]{geometry}
+\usepackage{fancyhdr}
+\usepackage{anyfontsize}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% 设置字体
+\setCJKmainfont{方正书宋简体}[BoldFont=方正黑体简体]
+\setmainfont{Times New Roman}
+
+% 定义加粗命令
+\newcommand{\mybold}[1]{{\heiti\bfseries #1}}
+
+% 设置全局段落缩进
+\setlength{\parindent}{2em}
+
+% 设置标题格式
+\CTEXsetup[
+format={\zihao{-4}\heiti\bfseries},
+name={},
+number={\chinese{section}、},
+aftername={},
+beforeskip={24pt},
+afterskip={12pt},
+indent={0pt}
+]{section}
+
+\CTEXsetup[
+format={\zihao{-4}},
+name={},
+number={\arabic{subsection}、},
+aftername={},
+beforeskip={12pt},
+afterskip={6pt},
+indent={0pt}
+]{subsection}
+
+\CTEXsetup[
+format={\zihao{-4}},
+name={},
+number={(\arabic{subsubsection})},
+aftername={},
+beforeskip={12pt},
+afterskip={6pt},
+indent={2em}
+]{subsubsection}
+
+% 设置页码格式
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\zihao{5} \textrm{—第\thepage 页，共\pageref{LastPage}页—}}
+\renewcommand{\headrulewidth}{0pt}
+
+% 取消首页特殊样式
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[C]{\zihao{4} \textrm{--}~\thepage~\textrm{--}}
+}
+
+% 设置enumerate格式
+\setlist[enumerate,1]{label=\arabic*)}
+
+% 自定义标题命令
+\newcommand{\doctitle}[1]{
+	\begin{center}
+		{\zihao{2} \textbf{#1}} % 二号字+加粗
+	\end{center}
+	\vspace{0pt} % 标题与正文间距
+}
+
+\lstset{
+  basicstyle=\ttfamily\zihao{5},
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red!70!black},
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true,
+  frame=single,
+  language=C,
+  showstringspaces=false
+}
+
+\begin{document}
+    \begin{equation}
+\max \sum_{i=1}^{834} \left\{ 1 - \prod_{j=1}^{w_i} \left[ 1 - \alpha \left( \frac{P_0}{(1+aMD_i)(1+bTD_i)} + l_i \right) \frac{1}{d_{ij} + l_i} \right] \right\}
+\end{equation}
+\end{document}
