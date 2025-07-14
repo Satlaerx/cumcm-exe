@@ -92,9 +92,15 @@ indent={2em}
 }
 
 \begin{document}
-    \begin{equation}
-\sum_{i=1}^{n} \left[ 1-\prod_{j=1}^{w_i} (1-P_{ij}) \right] = k 
-P_{ij}= \alpha \cdot S_{ij} + beta
-S_{ij} = \frac{pr_{i}}{(\mu \cdot h_{i}+ d_{ij})\cdot e}
-\end{equation}
+    \begin{aligned}
+\max \quad & \sum_{i=1}^{n} \left[ 1-\prod_{j=1}^{w} (1-P_{ij}) \right] \\
+\text{s.t.} \quad & P_{ij} = \alpha \cdot S_{ij} + \beta \\
+                  & S_{ij} = \frac{Pr_i}{(d_{ij} + \mu \cdot h_i)E_{i}}\\
+                  & Pr_i = \left( P_0 \cdot \frac{1}{1+a \cdot MD_i} \cdot \frac{1}{1+b \cdot TD_i} + h_i \right)E_i \\
+                  & \sum_{i=1}^{n} Pr_i = 57707.5 \\
+                  & a > 0 \\
+                  & b > 0 \\
+                  & P_0 > 0
+\end{aligned}
+
 \end{document}

@@ -1,106 +1,104 @@
 import numpy as np
 import pandas as pd
-from numba import jit, prange
-from scipy.sparse import csr_matrix
-from skopt import gp_minimize
-from skopt.space import Real
+from deap import base, creator, tools, algorithms
+import random
 
-# 加载数据
-data1=pd.read_excel("./data/data1_all.xlsx",
-                    names=["task_id","gps_0","gps_1","pricing","condition",
-                           "difficulty", "l_i","city","MD_i","TD_i"])
-# data1 = pd.DataFrame({
-#     #'MD_i': [1.0, 1.5, ...],  # 834行，每个i对应的MD_i
-#     #'TD_i': [0.8, 1.2, ...],  # 834行，每个i对应的TD_i
-#     #'l_i':  [0.5, 0.3, ...],  # 834行，l_i参数
-#     'w_i':  [10, 20, ...]     # 每个i的w_i值（j的上限）
-# })
+# 读取数据
+data1 = pd.read_excel("../data/data1_all.xlsx")
+distances3 = pd.read_excel("../data/task_to_member_distance_5km.xlsx")
+d = distances3.values[:, 1:]
+data2 = pd.read_excel("../data/data2_with_city_10.xlsx")
 
-distance = pd.DataFrame({
-    0: [1.0, 2.0, ...],       # 第1列d_i1
-    1: [1.5, 3.0, ...],       # 第2列d_i2
-})  # 共834行，每行长度可能不同
+mu = 0.5
+alpha = 0.007786111538245771
+beta = -6.592993037312056e-05
 
-# 转换为CSR稀疏格式（跳过-1值）
-data = []
-indices = []
-indptr = [0]
+# 城市与E_i值的映射字典
+city_e_values = {
+    "广州": 7.5896320020684875,
+    "深圳": 53.20182709198384,
+    "东莞": 1.0,
+    "佛山": 0.3665363288363272
+}
 
-for i in range(834):
-    row = distance.iloc[i].values
-    valid_mask = row != -1
-    valid_data = row[valid_mask]
+# 在data1中添加E列，根据城市匹配E_i值
+data1["E"] = data1["city"].map(city_e_values)
 
-    data.extend(valid_data)
-    indices.extend(np.where(valid_mask)[0])
-    indptr.append(len(data))
-
-d_ij_sparse = csr_matrix((data, indices, indptr), shape=(834, distance.shape[1]))
+MD = data1["MD"].values
+TD = data1["TD"].values
+h_values = data1["difficulty_d"].values
+credit = data2["task_limit"].values
+e_values = data1["E"].values
 
 
-@jit(nopython=True, parallel=True)
-def objective_function(P0, a, b, alpha, MD_i, TD_i, l_i, w_i, d_ij_data, d_ij_indices, d_ij_indptr):
-    """
-    参数说明:
-        P0, a, b: 待优化变量
-        alpha: 常数
-        MD_i, TD_i, l_i, w_i: 长度为834的数组
-        d_ij_data, d_ij_indices, d_ij_indptr: CSR格式稀疏矩阵
-    """
-    total = 0.0
-    for i in prange(834):
-        sum_i = 1.0
-        w_i_current = w_i[i]
-        row_start = d_ij_indptr[i]
-        row_end = d_ij_indptr[i + 1]
+# 遗传算法中目标函数
+def calculate_S(mu, h_i, d, Pr_i, e_i):
+    if d == -1:
+        return 0  # 跳过该项
+    S_ij = Pr_i / ((mu * h_i + d) * e_i)  # 直接计算S_ij
+    return S_ij
 
-        # 计算核心项分母
-        denominator = (1 + a * MD_i[i]) * (1 + b * TD_i[i])
-        core = (P0 / denominator) + l_i[i]
 
-        # 遍历有效d_ij
-        for idx in range(row_start, row_end):
-            j = d_ij_indices[idx]
-            if j >= w_i_current:
-                continue  # 跳过超出w_i范围的j
-            d_ij = d_ij_data[idx]
-            term = 1 - alpha * core / (d_ij + l_i[i])
-            sum_i *= term
+def calculate_P(S, alpha, beta):
+    return alpha * S + beta
 
-        total += (1 - sum_i)
-    return -total  # 取负是因为原问题是最大化
 
-def wrapped_objective(x):
-    P0, a, b = x
-    return objective_function(
-        P0, a, b, alpha=0.1,  # 假设alpha=0.1（根据实际修改）
-        MD_i=data1['MD_i'].values,
-        TD_i=data1['TD_i'].values,
-        l_i=data1['l_i'].values,
-        w_i=data1['w_i'].values,
-        d_ij_data=d_ij_sparse.data,
-        d_ij_indices=d_ij_sparse.indices,
-        d_ij_indptr=d_ij_sparse.indptr
-    )
+def equation_to_solve(params, mu, h_values, d, n, w, credit, MD, TD, e):
+    a, b, P_0 = params
+    sum_term = 0
+    Pr_total = 0  # 用来计算Pr_i的总和
 
-# 定义搜索空间
-space = [
-    Real(0.1, 10.0, name="P0"),   # P0范围
-    Real(0.01, 1.0, name="a"),    # a范围
-    Real(0.01, 1.0, name="b")     # b范围
-]
+    # 计算目标函数的值和Pr_i总和
+    for i in range(n):
+        prod_term = 1
+        for j in range(w):
+            # 计算 S_ij 和 Pr_i
+            Pr_i = (P_0 / (1 + a * MD[i]) * (1 + b * TD[i]) + h_values[i]) * e[i]
+            S_ij = calculate_S(mu=mu, h_i=h_values[i], d=d[i][j], Pr_i=Pr_i, e_i=e[i])
+            if S_ij == 0:
+                continue
+            P_ij = calculate_P(S_ij, alpha, beta)
+            prod_term *= (1 - P_ij) ** credit[j]
+        sum_term += (1 - prod_term)
+        Pr_total += Pr_i
 
-# 运行优化
-res = gp_minimize(
-    wrapped_objective,
-    space,
-    n_calls=50,                   # 总评估次数
-    n_initial_points=20,          # 初始采样点
-    acq_func="EI",                # 采集函数
-    random_state=42,
-    verbose=True
-)
+    # 加入约束惩罚
+    if abs(Pr_total - 57707.5) > 0.1:  # 允许小的浮动
+        sum_term += 1000 * abs(Pr_total - 57707.5)  # 惩罚不满足的情况
 
-# 输出结果
-print("最优解 (P0, a, b):", res.x)
-print("最优目标值:", -res.fun)      # 转换回最大值
+    return (sum_term,)  # 返回目标函数值
+
+
+# 设定遗传算法的基本参数
+creator.create("FitnessMin", base.Fitness, weights=(-1.0,))  # 我们要最小化目标函数
+creator.create("Individual", list, fitness=creator.FitnessMin)
+
+
+# 生成个体时，确保a, b, P_0 > 0
+def create_individual():
+    return [random.uniform(0.01, 10),  # a的范围 > 0
+            random.uniform(0.01, 10),  # b的范围 > 0
+            random.uniform(0.1, 10)]  # P_0的范围 > 0
+
+
+toolbox = base.Toolbox()
+toolbox.register("individual", tools.initIterate,
+                 creator.Individual, create_individual)
+toolbox.register("population", tools.initRepeat, list, toolbox.individual)
+
+# 目标函数，用于计算适应度
+toolbox.register("evaluate", equation_to_solve, mu=mu, h_values=h_values,
+                 d=d, n=data1.shape[0], w=data2.shape[0],
+                 credit=credit, MD=MD, TD=TD, e=e_values)
+toolbox.register("mate", tools.cxBlend, alpha=0.5)  # 交叉操作
+toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=0.1, indpb=0.2)  # 变异操作
+toolbox.register("select", tools.selTournament, tournsize=3)  # 选择操作
+
+# 遗传算法主函数
+population = toolbox.population(n=100)
+algorithms.eaSimple(population, toolbox, cxpb=0.7, mutpb=0.2,
+                    ngen=100, stats=None, halloffame=None)
+
+# 获取最佳个体
+best_individual = tools.selBest(population, 1)[0]
+print("最佳参数组合：", best_individual)
