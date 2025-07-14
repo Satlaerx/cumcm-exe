@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cf82515e-7378-43c2-b056-9059a3ef1512" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/~$city_distance.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/page.tex" beforeDir="false" afterPath="$PROJECT_DIR$/page/page.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/question2/NLP.py" beforeDir="false" afterPath="$PROJECT_DIR$/question2/NLP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +117,7 @@
       <workItem from="1752374419010" duration="4082000" />
       <workItem from="1752406922953" duration="8975000" />
       <workItem from="1752461841775" duration="10813000" />
-      <workItem from="1752487262818" duration="7637000" />
+      <workItem from="1752487262818" duration="8645000" />
     </task>
     <servers />
   </component>
