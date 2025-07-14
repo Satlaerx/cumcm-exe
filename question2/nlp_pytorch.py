@@ -35,7 +35,7 @@ e_values = torch.tensor(data1["E"].values, dtype=torch.float32).cuda()  # 转为
 # 遗传算法中目标函数
 def calculate_S(mu, h_i, d, Pr_i, e_i):
     if d == -1:
-        return 0  # 跳过该项
+        return torch.tensor(0.0).cuda()  # 确保返回的是GPU张量
     S_ij = Pr_i / ((mu * h_i + d) * e_i)  # 直接计算S_ij
     return S_ij
 
@@ -46,12 +46,12 @@ def calculate_P(S, alpha, beta):
 
 def equation_to_solve(params, mu, h_values, d, n, w, credit, MD, TD, e):
     a, b, P_0 = params
-    sum_term = 0
-    Pr_total = 0  # 用来计算Pr_i的总和
+    sum_term = torch.tensor(0.0, dtype=torch.float32).cuda()  # 确保sum_term是GPU张量
+    Pr_total = torch.tensor(0.0, dtype=torch.float32).cuda()  # 确保Pr_total是GPU张量
 
     # 计算目标函数的值和Pr_i总和
     for i in range(n):
-        prod_term = 1
+        prod_term = torch.tensor(1.0, dtype=torch.float32).cuda()  # 确保prod_term是GPU上的张量
         for j in range(w):
             # 计算 S_ij 和 Pr_i
             Pr_i = (P_0 / (1 + a * MD[i]) * (1 + b * TD[i]) + h_values[i]) * e[i]
@@ -59,7 +59,11 @@ def equation_to_solve(params, mu, h_values, d, n, w, credit, MD, TD, e):
             if S_ij == 0:
                 continue
             P_ij = calculate_P(S_ij, alpha, beta)
-            prod_term *= (1 - P_ij) ** credit[j]
+
+            # 确保credit[j]是一个GPU上的张量
+            credit_j = credit[j].cuda()  # 将credit[j]转为GPU张量
+            prod_term *= (1 - P_ij) ** credit_j  # 在GPU上进行计算
+
         sum_term += (1 - prod_term)
         Pr_total += Pr_i
 
