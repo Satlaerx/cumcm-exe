@@ -68,25 +68,12 @@ Z[~distance_mask] = np.nan  # 超出有效半径的区域设为透明
 contour = ax.contourf(
     X, Y, Z,
     levels=100,
-    cmap='RdYlGn',
+    cmap=None,  # 使用默认配色方案
     transform=ccrs.PlateCarree(),
     alpha=0.7,
     zorder=5,
     antialiased=True,
     extend='neither'  # 不扩展颜色范围
-)
-
-# 7. 添加原始数据点
-sc = ax.scatter(
-    lngs, lats,
-    c=completion_rates,
-    cmap='RdYlGn',
-    s=30,
-    edgecolor='k',
-    linewidth=0.5,
-    transform=ccrs.PlateCarree(),
-    zorder=10,
-    alpha=0.8
 )
 
 # ==================== 城市标记 ====================
@@ -110,9 +97,13 @@ for city, (lat, lng) in cities.items():
 # ==================== 其他元素 ====================
 
 # 添加颜色条
-cbar = plt.colorbar(sc, fraction=0.025, pad=0.01)
+cbar = plt.colorbar(contour, fraction=0.025, pad=0.01)
 cbar.set_label('任务完成率', rotation=270, labelpad=20, fontsize=16)
 cbar.ax.tick_params(labelsize=14)
+
+# 修改颜色条刻度
+ticks = np.arange(0, 1.1, 0.1)  # 设置为0到1，间隔为0.1
+cbar.set_ticks(ticks)
 
 # 网格线
 gl = ax.gridlines(
@@ -135,7 +126,7 @@ ax.text(0.02, 0.02, f'有效插值半径: {effective_radius}度 (约{int(effecti
         bbox=dict(facecolor='white', alpha=0.8, pad=5, edgecolor='none'),
         zorder=20)
 
-plt.title('珠三角地区任务完成率分布\n(仅显示数据点{effective_radius}度范围内的插值)'.format(
+plt.title('珠三角地区任务完成率分布\n数据点{effective_radius}度范围内的插值电势图'.format(
     effective_radius=effective_radius),
     fontsize=16, pad=18)
 

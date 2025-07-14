@@ -106,4 +106,4 @@ for task_id, task_row in tasks.iterrows():
         else:
             distance3.at[task_id, mem_id] = distance
 
-distance3.to_excel("../data/task_to_task_distance_5km.xlsx")
+distance3.to_excel("../data/task_to_member_distance_5km.xlsx")

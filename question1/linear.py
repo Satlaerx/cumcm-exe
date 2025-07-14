@@ -84,7 +84,7 @@ plt.figure(figsize=(12, 5))
 # 散点图：预测值 vs 实际值
 plt.subplot(1, 2, 1)
 plt.scatter(y_exp, y_pred, alpha=0.6)
-plt.plot([y_exp.min(), y_exp.max()], [y_exp.min(), y_exp.max()], 'r--')
+plt.plot([y_exp.s_min(), y_exp.s_max()], [y_exp.s_min(), y_exp.s_max()], 'r--')
 plt.xlabel('实际价格')
 plt.ylabel('预测价格')
 plt.title('预测值 vs 实际值')
