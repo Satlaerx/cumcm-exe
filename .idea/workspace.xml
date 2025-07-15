@@ -33,49 +33,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.1cities_judgment.executor": "Run",
-    "Python.2calculate_distance.executor": "Run",
-    "Python.NLP.executor": "Run",
-    "Python.calculate_E1.executor": "Run",
-    "Python.calculate_Ei.executor": "Run",
-    "Python.calculate_MD&TD.executor": "Run",
-    "Python.calculate_NLP_parameters.executor": "Run",
-    "Python.calculate_alpha&beta.executor": "Run",
-    "Python.cities_judgment.executor": "Run",
-    "Python.cities_rate.executor": "Run",
-    "Python.count_user_around_task.executor": "Run",
-    "Python.data_pre_processing.executor": "Run",
-    "Python.demo2.executor": "Run",
-    "Python.difficulty.executor": "Run",
-    "Python.distance_by_city.executor": "Run",
-    "Python.fit_6_parameters.executor": "Run",
-    "Python.k-means.executor": "Run",
-    "Python.linear.executor": "Run",
-    "Python.logistic_6_parameters.executor": "Run",
-    "Python.map.executor": "Run",
-    "Python.map1.executor": "Run",
-    "Python.map2.executor": "Run",
-    "Python.map3.executor": "Run",
-    "Python.map4.executor": "Run",
-    "Python.non_lin.executor": "Run",
-    "Python.non_lin2.executor": "Run",
-    "Python.nonlinear.executor": "Run",
-    "Python.plot1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/liumingxin/Documents/cumcm_exe",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.1cities_judgment.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2calculate_distance.executor&quot;: &quot;Run&quot;,
+    &quot;Python.NLP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_E1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_Ei.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_MD&amp;TD.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_NLP_parameters.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculate_alpha&amp;beta.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cities_judgment.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cities_rate.executor&quot;: &quot;Run&quot;,
+    &quot;Python.count_user_around_task.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_pre_processing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.demo2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.difficulty.executor&quot;: &quot;Run&quot;,
+    &quot;Python.distance_by_city.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fit_6_parameters.executor&quot;: &quot;Run&quot;,
+    &quot;Python.k-means.executor&quot;: &quot;Run&quot;,
+    &quot;Python.linear.executor&quot;: &quot;Run&quot;,
+    &quot;Python.logistic_6_parameters.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.map4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.non_lin.executor&quot;: &quot;Run&quot;,
+    &quot;Python.non_lin2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.nonlinear.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/liumingxin/Documents/cumcm_exe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -117,7 +117,8 @@
       <workItem from="1752374419010" duration="4082000" />
       <workItem from="1752406922953" duration="8975000" />
       <workItem from="1752461841775" duration="10813000" />
-      <workItem from="1752487262818" duration="8645000" />
+      <workItem from="1752487262818" duration="8915000" />
+      <workItem from="1752503041538" duration="4593000" />
     </task>
     <servers />
   </component>
@@ -151,7 +152,7 @@
     <SUITE FILE_PATH="coverage/cumcm_exe$map2.coverage" NAME="map2 覆盖结果" MODIFIED="1752312682590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$1cities_judgment.coverage" NAME="1cities_judgment 覆盖结果" MODIFIED="1752344777327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_pre_processing" />
     <SUITE FILE_PATH="coverage/cumcm_exe$2calculate_distance.coverage" NAME="2calculate_distance 覆盖结果" MODIFIED="1752471075967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_pre_processing" />
-    <SUITE FILE_PATH="coverage/cumcm_exe$NLP.coverage" NAME="NLP 覆盖结果" MODIFIED="1752495454920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$NLP.coverage" NAME="NLP 覆盖结果" MODIFIED="1752507241215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
     <SUITE FILE_PATH="coverage/cumcm_exe$non_lin.coverage" NAME="non_lin 覆盖结果" MODIFIED="1752206220075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$map.coverage" NAME="map 覆盖结果" MODIFIED="1751989888806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$logistic_6_parameters.coverage" NAME="logistic_6_parameters 覆盖结果" MODIFIED="1752339396848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
