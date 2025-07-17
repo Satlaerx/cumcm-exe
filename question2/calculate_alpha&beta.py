@@ -2,9 +2,9 @@ import pandas as pd
 
 data1 = pd.read_excel("../data/data1_all.xlsx")
 data2 = pd.read_excel("../data/data2_with_city.xlsx")
-distances = pd.read_excel("../data/task_to_member_distance.xlsx")
+distances = pd.read_excel("../data/task_to_member_distance_5km.xlsx")
 
-mu = 0.5
+mu = 1
 
 
 def satisfied(pricing, distance, difficulty):
@@ -27,7 +27,10 @@ s_min = float('inf')
 difficulty = data1["difficulty_d"].values
 for i in range(distances.shape[0]):
     for j in range(distances.shape[1] - 1):
-        satisfaction = satisfied(pricing[i], distance_values[i, j], difficulty[i])
+        if distance_values[i, j] == -1:
+            satisfaction_matrix.iloc[i, j] = -1
+            continue
+        satisfaction = pricing[i] / (distance_values[i, j] + mu * difficulty[i])
         satisfaction_matrix.iloc[i, j] = satisfaction
 
         if satisfaction > s_max:
@@ -40,7 +43,7 @@ satisfaction_matrix.to_excel("../data/satisfaction_cal_alpha_beta.xlsx", index=F
 
 print(s_max, s_min)
 
-alpha = 1 / (s_max - s_min)  # 0.007786111538245771
-beta = -1 * (s_min / (s_max - s_min))  # -6.592993037312056e-05
+alpha = 1 / (s_max - s_min)  # 0.017224862626975857
+beta = -1 * (s_min / (s_max - s_min))  # -0.13781535718863075
 
 print(alpha, beta)
