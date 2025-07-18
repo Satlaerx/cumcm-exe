@@ -131,5 +131,5 @@ plt.title('珠三角地区任务完成率分布\n数据点{effective_radius}度�
     fontsize=16, pad=18)
 
 # 保存
-plt.savefig('map4.pdf', dpi=300, bbox_inches='tight', facecolor='white')
+plt.savefig('map4.pdf', dpi=500, bbox_inches='tight', facecolor='white')
 plt.show()

@@ -45,5 +45,5 @@ for i in range(values2.shape[0]):
 data1["MD"] = MD
 data1["TD"] = TD
 
-data1.to_excel("../data/data1_all.xlsx")
-data2.to_excel("../data/data2_with_city_10.xlsx")
+data1.to_excel("../data/data1_all.xlsx", index=False)
+data2.to_excel("../data/data2_with_city_10.xlsx", index=False)

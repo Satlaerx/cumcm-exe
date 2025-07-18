@@ -1,9 +1,9 @@
 \documentclass[UTF8,a4paper]{ctexart}
 \usepackage[
-top=34.58mm,
-bottom=32.58mm,
-left=28mm,
-right=26mm
+    top=34.58mm,
+    bottom=32.58mm,
+    left=28mm,
+    right=26mm
 ]{geometry}
 \usepackage{fancyhdr}
 \usepackage{anyfontsize}
@@ -13,6 +13,8 @@ right=26mm
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 % 设置字体
 \setCJKmainfont{方正书宋简体}[BoldFont=方正黑体简体]
@@ -26,33 +28,33 @@ right=26mm
 
 % 设置标题格式
 \CTEXsetup[
-format={\zihao{-4}\heiti\bfseries},
-name={},
-number={\chinese{section}、},
-aftername={},
-beforeskip={24pt},
-afterskip={12pt},
-indent={0pt}
+    format={\zihao{-4}\heiti\bfseries},
+    name={},
+    number={\chinese{section}、},
+    aftername={},
+    beforeskip={24pt},
+    afterskip={12pt},
+    indent={0pt}
 ]{section}
 
 \CTEXsetup[
-format={\zihao{-4}},
-name={},
-number={\arabic{subsection}、},
-aftername={},
-beforeskip={12pt},
-afterskip={6pt},
-indent={0pt}
+    format={\zihao{-4}},
+    name={},
+    number={\arabic{subsection}、},
+    aftername={},
+    beforeskip={12pt},
+    afterskip={6pt},
+    indent={0pt}
 ]{subsection}
 
 \CTEXsetup[
-format={\zihao{-4}},
-name={},
-number={(\arabic{subsubsection})},
-aftername={},
-beforeskip={12pt},
-afterskip={6pt},
-indent={2em}
+    format={\zihao{-4}},
+    name={},
+    number={(\arabic{subsubsection})},
+    aftername={},
+    beforeskip={12pt},
+    afterskip={6pt},
+    indent={2em}
 ]{subsubsection}
 
 % 设置页码格式
@@ -63,8 +65,8 @@ indent={2em}
 
 % 取消首页特殊样式
 \fancypagestyle{plain}{
-	\fancyhf{}
-	\fancyfoot[C]{\zihao{4} \textrm{--}~\thepage~\textrm{--}}
+    \fancyhf{}
+    \fancyfoot[C]{\zihao{4} \textrm{--}~\thepage~\textrm{--}}
 }
 
 % 设置enumerate格式
@@ -72,35 +74,49 @@ indent={2em}
 
 % 自定义标题命令
 \newcommand{\doctitle}[1]{
-	\begin{center}
-		{\zihao{2} \textbf{#1}} % 二号字+加粗
-	\end{center}
-	\vspace{0pt} % 标题与正文间距
+    \begin{center}
+    {\zihao{2} \textbf{#1}} % 二号字+加粗
+    \end{center}
+    \vspace{0pt} % 标题与正文间距
 }
 
 \lstset{
-  basicstyle=\ttfamily\zihao{5},
-  keywordstyle=\color{blue},
-  commentstyle=\color{gray},
-  stringstyle=\color{red!70!black},
-  numbers=left,
-  numberstyle=\tiny,
-  breaklines=true,
-  frame=single,
-  language=C,
-  showstringspaces=false
+    basicstyle=\ttfamily\zihao{5},
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red!70!black},
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    frame=single,
+    language=C,
+    showstringspaces=false
 }
 
 \begin{document}
-    \begin{aligned}
-\max \quad & \sum_{i=1}^{n} \left[ 1-\prod_{j=1}^{w} (1-P_{ij}) \right] \\
-\text{s.t.} \quad & P_{ij} = \alpha \cdot S_{ij} + \beta \\
-                  & S_{ij} = \frac{Pr_i}{(d_{ij} + \mu \cdot h_i)E_{i}}\\
-                  & Pr_i = \left( P_0 \cdot \frac{1}{1+a \cdot MD_i} \cdot \frac{1}{1+b \cdot TD_i} + h_i \right)E_i \\
-                  & \sum_{i=1}^{n} Pr_i = 57707.5 \\
-                  & a > 0 \\
-                  & b > 0 \\
-                  & P_0 > 0
-\end{aligned}
+    \[
+        \begin{aligned}
+            \max \quad & \sum_{i=1}^{n} \left[ 1-\prod_{j=1}^{w_{i}} (1-P_{ij}) \right] \\
+            \text{s.t.} \quad & P_{ij} = \alpha \cdot S_{ij} + \beta \\
+            & S_{ij} = \frac{C_i}{(d_{ij} + h_i)E_{i}}\\
+            & C_i = \left( P_0 \cdot \frac{1}{1+a \cdot MD_i} \cdot \frac{1}{1+b \cdot TD_i} + H_i \right)E_i \\
+            & \sum_{i=1}^{n} C_i \leqslant 57707.5 \\
+            & a > 0 \\
+            & b > 0 \\
+            & P_0 > 0
+        \end{aligned}
+    \]
 
+    \[
+        \begin{aligned}
+            \max \quad & \sum_{i=1}^{n^{\prime}} \left[ 1 - \prod_{j=1}^{w_{i}^{\prime}} (1 - P_{ij}) \right] \\
+            \text{s.t.} \quad & P_{ij} = \alpha \cdot S_{ij} + \beta \\
+            & S_{ij} = \frac{C_i^{\prime}}{\left( \min_{1 \leqslant  k \leqslant  m_i} d_{i_k j} + \sum_{k=1}^{m_i} h_{i_k} + m_i - 1 \right) E_i} \\
+            & C_i^{\prime} = \sum_{k=1}^{m_i} C_{i_k} \cdot \frac{ \min_{1 \leqslant  k \leqslant  m_i} d_{i_k j} + \sum_{k=1}^{m_i} h_{i_k} + m_i - 1 }{ \sum_{k=1}^{m_i} (d_{i_k j} + h_{i_k}) } \\
+            & C_{i_k} = \left( P_0 \cdot \frac{1}{1 + a \cdot MD_{i_k}} \cdot \frac{1}{1 + b \cdot TD_{i_k} }+ H_{i_k} \right) E_{i_k}, \\
+            & \quad i \in \{1, \dots, n^{\prime} \},\quad k \in \{1, \dots, m_i \} \\
+            & \sum_{i=1}^{n^{\prime}} C_i^{\prime} \leqslant  57707.5 \\
+            & a > 0,\quad b > 0,\quad P_0 > 0
+        \end{aligned}
+    \]
 \end{document}

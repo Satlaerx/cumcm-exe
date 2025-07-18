@@ -94,7 +94,7 @@ data1["difficulty_d"] = pd.cut(
 print("\n各区间的数量分布:")
 print(data1["difficulty_d"].value_counts().sort_index())
 
-data1.to_excel("../data/data1_with_city&cluster&difficulty.xlsx")
+data1.to_excel("../data/data1_with_city&cluster&difficulty.xlsx",index=False)
 
 # 拟合结果分析
 ss_res = np.sum(residuals ** 2)
