@@ -4,18 +4,18 @@ from deap import base, creator, tools, algorithms
 from multiprocessing import Pool, freeze_support
 import random
 
-# ==== 固定参数 ====
+# 固定参数
 mu = 1
 alpha = 0.007786111538245771
 beta = -6.592993037312056e-05
 
-# ==== 数据读取 ====
-data1 = pd.read_excel("../data/data1_all.xlsx")
-distances3 = pd.read_excel("../data/task_to_member_distance_5km.xlsx")
-d = distances3.values[:, 1:]
+# 数据读取
+data1 = pd.read_excel("../data/data1_new.xlsx")
+distances3 = pd.read_excel("../data/task_to_member_distance_new.xlsx")
+d = distances3.iloc[:, 1:].to_numpy(dtype=float)
 data2 = pd.read_excel("../data/data2_with_city_10.xlsx")
 
-# ==== E值映射 ====
+# E值映射
 city_e_values = {
     "广州": 7.5896320020684875,
     "深圳": 53.20182709198384,
@@ -24,37 +24,48 @@ city_e_values = {
 }
 data1["E"] = data1["city"].map(city_e_values)
 
-# ==== 提取数据 ====
+# 提取数据
 MD = data1["MD"].values
 TD = data1["TD"].values
 h_d = data1["difficulty_d"].values
 h_values = data1["difficulty"].values
 e_values = data1["E"].values
 credit = data2["task_limit"].values
+i_k_limit = data1["cluster_size"].values
 
-n = data1.shape[0]
+n = 628  # DBSCAN打包之后任务数
 w = data2.shape[0]
 
 
-# ==== 遗传算法目标函数 ====
-def equation_to_solve(params, mu, h_values, h_d, d, n, w, credit, MD, TD, e):
+# 遗传算法目标函数
+def equation_to_solve(params, mu, h_values, h_d, d, n, w,
+                      credit, MD, TD, e, i_k_limit):
     a, b, P_0 = params
 
+    # 非法值惩罚
     if a <= 0 or b <= 0 or P_0 <= 0:
-        return (-1e10,)  # 非法值惩罚
+        return (-1e10,)
 
+    index = 0  # 数据DataFrame中当前所在行的索引
     sum_term = 0
-    Pr_total = 0
+    C_total = 0
 
     for i in range(n):
-        Pr_i = (P_0 / (1 + a * MD[i]) * (1 + b * TD[i]) + h_values[i]) * e[i]
+        sum_C_i_k=0
+        min_d
+        for k in range(i_k_limit[i]):
+            C_i_k = (P_0 / (1 + a * MD[index + k]) *
+                     (1 + b * TD[index + k]) + h_values[index + k]) * e[index + k]
+            sum_C_i_k += C_i_k
+
+
         log_prod_term = 0
 
         for j in range(w):
             if d[i][j] == -1:
                 continue
 
-            S_ij = Pr_i / ((mu * h_d[i] + d[i][j]) * e[i])
+            S_ij = C_i / ((mu * h_d[i] + d[i][j]) * e[i])
             P_ij = alpha * S_ij + beta
             P_ij = np.clip(P_ij, 0, 1 - 1e-10)  # 避免 log1p(-1)
 
@@ -65,15 +76,15 @@ def equation_to_solve(params, mu, h_values, h_d, d, n, w, credit, MD, TD, e):
             prob = 0
 
         sum_term += (1 - prob)
-        Pr_total += Pr_i
+        C_total += C_i
 
-    if Pr_total > 57707.5:
-        return (sum_term - 1000 * (Pr_total - 57707.5),)
+    if C_total > 57707.5:
+        return (sum_term - 1000 * (C_total - 57707.5),)
 
     return (sum_term,)
 
 
-# ==== 遗传算法设置 ====
+# 遗传算法设置
 creator.create("FitnessMax", base.Fitness, weights=(1.0,))
 creator.create("Individual", list, fitness=creator.FitnessMax)
 
@@ -97,7 +108,7 @@ toolbox.register("mate", tools.cxBlend, alpha=0.5)
 toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=0.1, indpb=0.2)
 toolbox.register("select", tools.selTournament, tournsize=3)
 
-# ==== 并行运行主程序 ====
+# 并行运行主程序
 if __name__ == "__main__":
     freeze_support()
 

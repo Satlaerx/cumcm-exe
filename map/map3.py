@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib import rcParams
 
-plt.rcParams["font.family"] = ["Times New Roman","SimHei"]
+plt.rcParams["font.family"] = ["Times New Roman", "SimHei"]
 plt.rcParams['figure.dpi'] = 500
 rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
 
@@ -105,9 +105,6 @@ plt.title('珠三角地区任务完成率热力图（46个聚类中心）\n完�
     fontsize=16, pad=18)
 
 # 保存图片
-plt.savefig('map3.pdf',
-            dpi=300,
-            bbox_inches='tight',
-            facecolor='white')
+plt.savefig('map3.pdf', dpi=500, bbox_inches='tight', facecolor='white')
 
 plt.show()
