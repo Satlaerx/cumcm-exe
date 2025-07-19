@@ -14,7 +14,7 @@ distances = task_to_task_distance.iloc[:, 1:].to_numpy(dtype=float)
 data1 = pd.read_excel("../data/data1_all.xlsx")
 
 # 聚类
-db = DBSCAN(eps=1, min_samples=2, metric='precomputed')
+db = DBSCAN(eps=1.0, min_samples=2, metric='precomputed')
 labels = db.fit_predict(distances)
 data1["DBSCAN"] = labels
 data1.to_excel("../data/data1_all_with_DBSCAN.xlsx", index=False)
