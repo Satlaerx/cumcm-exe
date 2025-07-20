@@ -58,7 +58,7 @@ distance_matrix = distance3.iloc[:, 1:].values.astype(float)
 task_limits = data2["task_limit"].values
 
 # ========== 拟合参数 ==========
-initial_guess = [0.1, 0.01]
+initial_guess = [0.01, 0.01]
 
 params_opt, params_cov = curve_fit(
     f=fit_func,

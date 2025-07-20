@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf82515e-7378-43c2-b056-9059a3ef1512" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/question2/calculation_result.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_pre_processing/cities_rate.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_pre_processing/cities_rate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/question2/.fit_alpha_beta.py" beforeDir="false" afterPath="$PROJECT_DIR$/question2/.fit_alpha_beta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/question2/MLE_alpha_beta.py" beforeDir="false" afterPath="$PROJECT_DIR$/question2/MLE_alpha_beta.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/question2/NLP.py" beforeDir="false" afterPath="$PROJECT_DIR$/question2/NLP.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/question2/calculate_Ei.py" beforeDir="false" afterPath="$PROJECT_DIR$/question2/.calculate_Ei.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/question2/fit_alpha_beta.py" beforeDir="false" afterPath="$PROJECT_DIR$/question2/.fit_alpha_beta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/question2/logistic_6_parameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/question2/.logistic_6_parameters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/question2/nlp_pytorch.py" beforeDir="false" afterPath="$PROJECT_DIR$/question2/.nlp_pytorch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,54 +38,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.1cities_judgment.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2calculate_distance.executor&quot;: &quot;Run&quot;,
-    &quot;Python.DBSCAN.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MLE_alpha_beta.executor&quot;: &quot;Run&quot;,
-    &quot;Python.NLP.executor&quot;: &quot;Run&quot;,
-    &quot;Python.NLP3_pre_cal.executor&quot;: &quot;Run&quot;,
-    &quot;Python.calculate_E1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.calculate_Ei.executor&quot;: &quot;Run&quot;,
-    &quot;Python.calculate_MD&amp;TD.executor&quot;: &quot;Run&quot;,
-    &quot;Python.calculate_NLP_parameters.executor&quot;: &quot;Run&quot;,
-    &quot;Python.calculate_alpha&amp;beta.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cities_judgment.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cities_rate.executor&quot;: &quot;Run&quot;,
-    &quot;Python.count_user_around_task.executor&quot;: &quot;Run&quot;,
-    &quot;Python.data_pre_processing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.data_sort.executor&quot;: &quot;Run&quot;,
-    &quot;Python.demo2.executor&quot;: &quot;Run&quot;,
-    &quot;Python.difficulty.executor&quot;: &quot;Run&quot;,
-    &quot;Python.distance_by_city.executor&quot;: &quot;Run&quot;,
-    &quot;Python.fit_6_parameters.executor&quot;: &quot;Run&quot;,
-    &quot;Python.fit_alpha_beta.executor&quot;: &quot;Run&quot;,
-    &quot;Python.k-means.executor&quot;: &quot;Run&quot;,
-    &quot;Python.linear.executor&quot;: &quot;Run&quot;,
-    &quot;Python.logistic_6_parameters.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map2.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map3.executor&quot;: &quot;Run&quot;,
-    &quot;Python.map4.executor&quot;: &quot;Run&quot;,
-    &quot;Python.non_lin.executor&quot;: &quot;Run&quot;,
-    &quot;Python.non_lin2.executor&quot;: &quot;Run&quot;,
-    &quot;Python.nonlinear.executor&quot;: &quot;Run&quot;,
-    &quot;Python.plot1.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/liumingxin/Documents/cumcm_exe&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python..fit_alpha_beta.executor": "Run",
+    "Python.1cities_judgment.executor": "Run",
+    "Python.2calculate_distance.executor": "Run",
+    "Python.DBSCAN.executor": "Run",
+    "Python.MLE_alpha_beta.executor": "Run",
+    "Python.NLP.executor": "Run",
+    "Python.NLP3_pre_cal.executor": "Run",
+    "Python.calculate_E1.executor": "Run",
+    "Python.calculate_Ei.executor": "Run",
+    "Python.calculate_MD&TD.executor": "Run",
+    "Python.calculate_NLP_parameters.executor": "Run",
+    "Python.calculate_alpha&beta.executor": "Run",
+    "Python.calculation_result.executor": "Run",
+    "Python.cities_judgment.executor": "Run",
+    "Python.cities_rate.executor": "Run",
+    "Python.count_user_around_task.executor": "Run",
+    "Python.data_pre_processing.executor": "Run",
+    "Python.data_sort.executor": "Run",
+    "Python.demo2.executor": "Run",
+    "Python.difficulty.executor": "Run",
+    "Python.distance_by_city.executor": "Run",
+    "Python.fit_6_parameters.executor": "Run",
+    "Python.fit_alpha_beta.executor": "Run",
+    "Python.k-means.executor": "Run",
+    "Python.linear.executor": "Run",
+    "Python.logistic_6_parameters.executor": "Run",
+    "Python.map.executor": "Run",
+    "Python.map1.executor": "Run",
+    "Python.map2.executor": "Run",
+    "Python.map3.executor": "Run",
+    "Python.map4.executor": "Run",
+    "Python.non_lin.executor": "Run",
+    "Python.non_lin2.executor": "Run",
+    "Python.nonlinear.executor": "Run",
+    "Python.plot1.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/liumingxin/Documents/cumcm_exe",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -144,7 +146,8 @@
       <workItem from="1752859404544" duration="907000" />
       <workItem from="1752910761397" duration="14177000" />
       <workItem from="1752935952264" duration="95000" />
-      <workItem from="1752942022802" duration="755000" />
+      <workItem from="1752942022802" duration="828000" />
+      <workItem from="1752994322556" duration="6728000" />
     </task>
     <servers />
   </component>
@@ -176,14 +179,15 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cumcm_exe$map2.coverage" NAME="map2 覆盖结果" MODIFIED="1752312682590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/cumcm_exe$MLE_alpha_beta.coverage" NAME="MLE_alpha_beta Coverage Results" MODIFIED="1752929742499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$MLE_alpha_beta.coverage" NAME="MLE_alpha_beta Coverage Results" MODIFIED="1753001178368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
     <SUITE FILE_PATH="coverage/cumcm_exe$1cities_judgment.coverage" NAME="1cities_judgment 覆盖结果" MODIFIED="1752344777327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_pre_processing" />
     <SUITE FILE_PATH="coverage/cumcm_exe$2calculate_distance.coverage" NAME="2calculate_distance 覆盖结果" MODIFIED="1752471075967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_pre_processing" />
-    <SUITE FILE_PATH="coverage/cumcm_exe$NLP.coverage" NAME="NLP Coverage Results" MODIFIED="1752933411395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$NLP.coverage" NAME="NLP Coverage Results" MODIFIED="1752997387592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
     <SUITE FILE_PATH="coverage/cumcm_exe$non_lin.coverage" NAME="non_lin 覆盖结果" MODIFIED="1752206220075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$map.coverage" NAME="map 覆盖结果" MODIFIED="1751989888806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$logistic_6_parameters.coverage" NAME="logistic_6_parameters 覆盖结果" MODIFIED="1752339396848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$data_sort.coverage" NAME="data_sort Coverage Results" MODIFIED="1752856836500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question3" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$calculation_result.coverage" NAME="calculation_result Coverage Results" MODIFIED="1752996949705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
     <SUITE FILE_PATH="coverage/cumcm_exe$nonlinear.coverage" NAME="nonlinear Coverage Results" MODIFIED="1752851482072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question1" />
     <SUITE FILE_PATH="coverage/cumcm_exe$map4.coverage" NAME="map4 Coverage Results" MODIFIED="1752853839176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/map" />
     <SUITE FILE_PATH="coverage/cumcm_exe$calculate_Ei.coverage" NAME="calculate_Ei 覆盖结果" MODIFIED="1752491367695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
@@ -191,6 +195,7 @@
     <SUITE FILE_PATH="coverage/cumcm_exe$plot1.coverage" NAME="plot1 覆盖结果" MODIFIED="1752216767157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$map1.coverage" NAME="map1 覆盖结果" MODIFIED="1752312672149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$calculate_NLP_parameters.coverage" NAME="calculate_NLP_parameters 覆盖结果" MODIFIED="1752337731298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$_fit_alpha_beta.coverage" NAME=".fit_alpha_beta Coverage Results" MODIFIED="1752999403592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
     <SUITE FILE_PATH="coverage/cumcm_exe$distance_by_city.coverage" NAME="distance_by_city 覆盖结果" MODIFIED="1752471949010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
     <SUITE FILE_PATH="coverage/cumcm_exe$calculate_alpha_beta.coverage" NAME="calculate_alpha&amp;beta 覆盖结果" MODIFIED="1752674824461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
     <SUITE FILE_PATH="coverage/cumcm_exe$calculate_MD_TD.coverage" NAME="calculate_MD&amp;TD Coverage Results" MODIFIED="1752851575620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question2" />
@@ -206,7 +211,7 @@
     <SUITE FILE_PATH="coverage/cumcm_exe$fit_6_parameters.coverage" NAME="fit_6_parameters 覆盖结果" MODIFIED="1752339252065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cumcm_exe$linear.coverage" NAME="linear 覆盖结果" MODIFIED="1752344848883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question1" />
     <SUITE FILE_PATH="coverage/cumcm_exe$DBSCAN.coverage" NAME="DBSCAN Coverage Results" MODIFIED="1752916872409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question3" />
-    <SUITE FILE_PATH="coverage/cumcm_exe$cities_rate.coverage" NAME="cities_rate Coverage Results" MODIFIED="1752913586886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_pre_processing" />
+    <SUITE FILE_PATH="coverage/cumcm_exe$cities_rate.coverage" NAME="cities_rate Coverage Results" MODIFIED="1753000160031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_pre_processing" />
     <SUITE FILE_PATH="coverage/cumcm_exe$k_means.coverage" NAME="k-means 覆盖结果" MODIFIED="1752344360738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/question1" />
   </component>
 </project>

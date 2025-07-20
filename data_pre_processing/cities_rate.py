@@ -15,9 +15,14 @@ city_pricing_means=filtered_data.groupby("city")["pricing"].mean()
 pricing_min=data1["pricing"].min()
 pricing_max=data1["pricing"].max()
 
+condition_rate=data1["condition"].mean()
+
 # 打印结果（保留4位小数）
 print("各城市condition的和:")
 print(city_condition_sum)
+
+print("总完成率:")
+print(condition_rate)
 
 print("各城市condition的平均值:")
 print(city_condition_means.round(4))

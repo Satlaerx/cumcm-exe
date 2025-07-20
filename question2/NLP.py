@@ -68,8 +68,7 @@ def fitness_function(params, mu, h_values, h_d, d, credit, MD, TD, e):
         total_Pr += Pr_i
 
     if total_Pr > PR_TOTAL_THRESHOLD:
-        penalty = 1000 * (total_Pr - PR_TOTAL_THRESHOLD)
-        return (total_score - penalty,)  # 惩罚超出总定价的参数组合
+        return (-1e10,)  # 惩罚非法值
 
     return (total_score,)
 
