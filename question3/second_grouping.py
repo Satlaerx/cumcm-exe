@@ -2,40 +2,60 @@ import pandas as pd
 from sklearn.cluster import KMeans
 import numpy as np
 
-data1 = pd.read_excel("../data/data1_new.xlsx")
-clusters = [8, 14, 41, 51, 58, 66, 68, 70, 77, 83, 85, 109, 125, 176]
-clusters_max = 167  # 当前最大标号，初始化为 167
+# 读取数据
+data1 = pd.read_excel("../data/data1_all_with_DBSCAN.xlsx")
+clusters_max = int(data1['DBSCAN'].max())  # 初始最大组号
+print("初始最大组号:", clusters_max)
 
-for cluster in clusters:
-    data1_grouped = data1.loc[data1['DBSCAN'] == cluster].copy()
+# 忽略掉 DBSCAN == -1 的散点
+iteration = 0
+while True:
+    print(f"\n========= 第 {iteration + 1} 轮细分聚类 =========")
+    # 统计每组的样本数量，忽略掉 -1 的
+    valid_data = data1[data1['DBSCAN'] != -1]
+    group_counts = valid_data['DBSCAN'].value_counts()
 
-    # 根据成员数量决定聚类数
-    k = 3 if len(data1_grouped) > 10 else 2
+    # 找出需要进一步聚类的组（样本数量 > 5）
+    large_groups = group_counts[group_counts > 5].index.tolist()
+    print(f"样本数大于 5 的组数量: {len(large_groups)}")
 
-    # 提取需要聚类的特征
-    X_scaled = data1_grouped[["gps_0", "gps_1"]]
+    if not large_groups:
+        print("所有组的样本数都不超过 5，结束迭代。")
+        break
 
-    # 执行 KMeans 聚类
-    kmeans = KMeans(n_clusters=k, random_state=42).fit(X_scaled)
+    for cluster in large_groups:
+        data1_grouped = data1.loc[data1['DBSCAN'] == cluster].copy()
 
-    # 初始化 new_clusters 数组，存储每个数据点的最终聚类标签
-    new_clusters = np.zeros(len(data1_grouped))
+        # 根据成员数量决定聚类数
+        k = 3 if len(data1_grouped) > 10 else 2
 
-    # 对于第一小组，使用原大组的标号
-    first_cluster_label = cluster
-    first_group_indices = np.where(kmeans.labels_ == 0)[0]
-    new_clusters[first_group_indices] = first_cluster_label
+        X_scaled = data1_grouped[["gps_0", "gps_1"]]
+        kmeans = KMeans(n_clusters=k, random_state=42).fit(X_scaled)
 
-    # 对于其他小组，使用 clusters_max + 1 开始重新编号
-    for i in range(1, k):
-        group_indices = np.where(kmeans.labels_ == i)[0]
-        new_clusters[group_indices] = clusters_max + 1
-        clusters_max += 1  # 更新 clusters_max
+        new_clusters = np.zeros(len(data1_grouped))
 
-    # 更新原数据的DBSCAN列
-    data1.loc[data1['DBSCAN'] == cluster, 'DBSCAN'] = new_clusters
+        # 第一小组继续使用原始编号
+        first_group_indices = np.where(kmeans.labels_ == 0)[0]
+        new_clusters[first_group_indices] = cluster
 
-print("二次聚类之后的分组标号的最大值为:", clusters_max)
+        # 其余小组用新编号
+        for i in range(1, k):
+            group_indices = np.where(kmeans.labels_ == i)[0]
+            clusters_max += 1
+            new_clusters[group_indices] = clusters_max
 
-# 将处理后的数据保存为新的文件
-data1.to_excel("../data/data1_DBSCAN_and_Kmeans.xlsx",index=False)
+        # 更新原数据
+        data1.loc[data1['DBSCAN'] == cluster, 'DBSCAN'] = new_clusters
+
+    iteration += 1
+
+# 输出最终聚类编号最大值
+print("\n最终聚类分组标号最大值为:", clusters_max)
+
+# 输出最终每组样本数量
+final_counts = data1[data1['DBSCAN'] != -1]['DBSCAN'].value_counts().sort_index()
+print("\n最终每组样本数量如下：")
+print(final_counts)
+
+# 保存文件
+data1.to_excel("../data/data1_DBSCAN_KMeans.xlsx", index=False)

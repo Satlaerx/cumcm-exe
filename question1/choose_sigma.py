@@ -3,7 +3,7 @@ import numpy as np
 
 # 设置中文字体和图片清晰度
 plt.rcParams["font.family"] = ["Times New Roman", "SimHei"]
-plt.rcParams['figure.dpi'] = 1000
+plt.rcParams['figure.dpi'] = 500
 
 
 def fun(d, sigma):
@@ -23,10 +23,11 @@ plt.grid(True, linestyle='--', alpha=0.7)
 plt.xticks(np.arange(0, 21, 1))  # 从0到20，间隔2
 
 # 添加图表元素
-plt.title('不同σ值的高斯函数曲线')
+plt.title('不同 σ 值的高斯衰减函数曲线')
 plt.xlabel('距离 d')
 plt.ylabel('函数值')
 plt.legend()  # 显示图例
 
 plt.tight_layout()  # 优化布局
+plt.savefig('sigma.pdf', dpi=500, bbox_inches='tight', facecolor='white')
 plt.show()
