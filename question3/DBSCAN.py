@@ -34,6 +34,10 @@ for label, members in clusters.items():
 
 size_counter = Counter(cluster_sizes)
 
+# 输出个体数量大于 5 的聚类标号
+larger_than_5_clusters = [label for label, members in clusters.items() if len(members) > 5]
+print("聚类中个体数量大于 5 的类标号:", larger_than_5_clusters)
+
 # 画柱状图
 sizes = sorted(size_counter)
 counts = [size_counter[s] for s in sizes]

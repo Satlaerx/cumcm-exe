@@ -118,7 +118,7 @@ if __name__ == "__main__":
         population, logbook = algorithms.eaSimple(
             population, toolbox,
             cxpb=0.8, mutpb=0.3,
-            ngen=180,
+            ngen=250,
             stats=stats,
             halloffame=hof,
             verbose=True
