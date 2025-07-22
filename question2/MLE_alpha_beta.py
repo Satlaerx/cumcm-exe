@@ -15,7 +15,7 @@ data2 = pd.read_excel("../data/data2_with_city_10.xlsx")
 distance3 = pd.read_excel("../data/task_to_member_distance_5km.xlsx")
 
 # ==================== 常量设置 ====================
-mu = 1  # 距离难度系数
+mu = 0.1  # 距离难度系数
 
 
 # ==================== 模型函数 ====================
@@ -35,7 +35,6 @@ def model_function(city, pricing, d_level, distance_matrix, task_limits, alpha, 
             denom = d + mu * d_level[i]
             s_ij = (pricing[i] - E) / denom
             p = alpha * s_ij + beta
-            print((alpha, beta, s_ij, p * 100))
             p = np.clip(p, 1e-10, 1 - 1e-10)  # 防止 log(0)
 
             log_sum += task_limits[j] * np.log(1 - p)
@@ -100,26 +99,17 @@ pseudo_r2 = 1 - log_likelihood_model / log_likelihood_null
 print(f"McFadden 伪 R² = {pseudo_r2:.4f}")
 
 # ==================== 结果可视化 ====================
-# # 1. 预测与实际值对比图
-# plt.figure(figsize=(10, 6))
-# plt.scatter(y_actual, y_pred, color='blue', alpha=0.5)
-# plt.plot([0, 1], [0, 1], color='red', linestyle='--')
-# plt.xlabel('Actual Condition')
-# plt.ylabel('Predicted Probability')
-# plt.title('Actual vs Predicted Condition')
-# plt.show()
-
-# 2. ROC 曲线
 fpr, tpr, _ = roc_curve(y_actual, y_pred)
 roc_auc = auc(fpr, tpr)
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(6, 6))
 plt.plot(fpr, tpr, color='blue', lw=2, label=f'ROC curve (AUC = {roc_auc:.2f})')
 plt.plot([0, 1], [0, 1], color='red', linestyle='--')
 plt.xlim([0.0, 1.0])
-plt.ylim([0.0, 1.05])
+plt.ylim([0.0, 1.0])
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('Receiver Operating Characteristic (ROC) Curve')
 plt.legend(loc='lower right')
+plt.savefig('MLE_ROC.pdf', dpi=500, bbox_inches='tight', facecolor='white')
 plt.show()

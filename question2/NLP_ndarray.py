@@ -66,12 +66,12 @@ def fitness_function(params, mu, h_values, h_d, d, credit, MD, TD, e):
 
     # 参数非正数时惩罚
     if a <= 0 or b <= 0 or P0 <= 0:
-        return (-1e10,)
+        return (-1e300,)
 
     n_tasks, n_members = d.shape
 
     # 生成有效成员掩码矩阵，True 表示有效
-    mask = (d != -1)  # shape: (n_tasks, n_members)
+    mask = (d >= 0)  # shape: (n_tasks, n_members)
 
     # 计算任务的基础概率 Pr_i，向量化计算
     # 形状为 (n_tasks,)
@@ -119,7 +119,7 @@ def fitness_function(params, mu, h_values, h_d, d, credit, MD, TD, e):
     # 计算 Pr_i 总和，若超阈值惩罚
     total_Pr = np.sum(Pr)
     if total_Pr > PR_TOTAL_THRESHOLD:
-        return (-1e10,)
+        return (-1e300,)
 
     # 返回适应度值元组
     return (total_score,)
